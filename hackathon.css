@@ -1,31 +1,40 @@
 
 /* Resetting default margin and padding */
 body, ul {
+  
   margin: 0;
   padding: 0;
 }
 
 nav ul {
   list-style-type: none;
-  margin: 0;
-  padding: 0;
+  margin: 10;
   overflow: hidden;
+  
 }
 
 nav ul li {
-  float: left;
+  float: right;
 }
 
 nav ul li a {
   display: block;
   color: white;
   text-align: center;
-  padding: 14px 16px;
+  padding: 0px;
   text-decoration: none;
 }
 
 nav ul li a:hover {
   background-color: #111;
+}
+.btn {
+  display: inline-block;
+  background-color:#ad8484;
+  color: white;
+  padding: 0;
+  text-decoration: none;
+  border-radius: 25;
 }
 
 
@@ -44,12 +53,15 @@ nav ul li a:hover {
   }
   
   header {
-    background-color: #df5a5a;
+    background-color: rgb(228, 229, 237);
     color: white;
     padding: 20px 0;
   }
   
   header h1 {
+    font-size: 80px;
+    color:#808080;
+    style:monospace;
     margin: 0;
   }
   
@@ -63,16 +75,20 @@ nav ul li a:hover {
   }
   
   nav ul li a {
-    color: black;
+    color: rgb(222, 217, 217);
     text-decoration: none;
   }
   
   .hero {
     background-image: url('https://t4.ftcdn.net/jpg/00/78/97/35/360_F_78973579_sYLDxFsEKOWnxyi9iMVVj4NuPGURN375.jpg');
     background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
     color: #808080;
     text-align: center;
     padding:400px 0;
+    width: 100%;
+    
   }
   
   .hero h2 {
@@ -100,39 +116,19 @@ nav ul li a:hover {
     font-size: 40px;
     margin-bottom: 20px;
   }
-  .footer{
-     bg-color: yeloow;
-     colour: white;
-  }
+  
   /* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #514c4c;
-  min-width: 160px;
-  z-index: 1;
-}
 
-/* Links inside the dropdown */
-.dropdown-content a {
-  float:left;
-  color: rgb(214, 201, 201);
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {
-  background-color: #1a1717;
-}
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-  display: block;
-}
   main{
-    background-color:bisque;
+    background-color:rgb(28, 26, 25);
+    color:white;
     padding: 20px;
 
   }
+  footer {
+    background-color: #060708;
+    color: rgb(237, 237, 237);
+    text-align: center;
+    padding: 10px;
+  }
+ 
