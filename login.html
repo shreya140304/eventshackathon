@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="login.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script src="https://www.gstatic.com/firebasejs/9.2.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.2.0/firebase-firestore-compat.js"></script>
+
+    <style> 
+    
+        .center-align {text-align: center;}
+        
+    .container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    body {
+    font-family: Georgia, sans-serif;
+    text-align: center;
+    }
+
+form {
+    text-align: center;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+h2 {
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="text"],
+input[type="text"],
+select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 20px;
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+input[type="submit"]:hover {
+    background-color: #77b1ef;
+}
+    </style>
+</head>
+<body style = "background-color: rgb(104, 142, 157);">
+    <h1 style = "color: orange;">Enter Login Details </h1>
+    <form name="login" id="login">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <label for="password">Password:</label>
+        <input type="text" id="password" name="password" required><br><br>
+
+        <button type="button" onclick="submitForm()">Submit</button>
+    </form>
+    <script>
+        
+        const firebaseConfig = {
+            apiKey: "AIzaSyCUX1vsNu-2Yp_BN35qNkEsfYDYWSLVzC4",
+            authDomain: "sol-51bec.firebaseapp.com",
+            projectId: "sol-51bec",
+            storageBucket: "sol-51bec.appspot.com",
+            messagingSenderId: "870973511731",
+            appId: "1:870973511731:web:1e9ff1541b46c9d58e2b46",
+            measurementId: "G-9D5HCQ7L2L"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const firestore = firebase.firestore();
+        const eventsRef = firestore.collection('login');
+        function submitForm() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            if (password && username) {
+                eventsRef.add({
+                    name: username,
+                    password : password
+                })
+                .then(() => {
+                    console.log('Event registered successfully');
+                    // Reset form
+                    document.getElementById('login').reset();
+                }).catch((error) => {
+                    console.error('Error adding event:', error);
+                });
+            } else {
+                alert('Please fill in all fields');
+            }
+        }
+    </script>
+</body>
+</html>
