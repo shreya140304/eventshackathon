@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Firebase Firestore Example</title>
+  <!-- Include Firebase JavaScript SDK (compatibility version) -->
+  <script src="https://www.gstatic.com/firebasejs/9.2.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.2.0/firebase-firestore-compat.js"></script>
+  <style>
+    body {
+        font-family: Georgia, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #faf8f8;
+        color: #e60404;
+    }
+    .navbar {
+        background-color: #333;
+        overflow: hidden;
+    }
+    .navbar a {
+        float: left;
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 20px;
+        text-decoration: none;
+    }
+    .navbar a.right {
+        float: right;
+    }
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        text-align: center
+    }
+    h1 {
+        text-align: center;
+        color: black;
+        margin-bottom: 20px;
+    }
+    .event-container {
+        margin-bottom: 20px;
+    }
+    .event {
+        margin-bottom: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .event h2 {
+        text-align: center;
+        padding: 10px;
+        background-color: #333;
+        color: #fff;
+        margin: 0;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+    .leaderboard-container {
+        max-height: 300px; /* Adjust height as needed */
+        overflow-y: auto;
+    }
+    .leaderboard {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .leaderboard th, .leaderboard td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    .leaderboard th {
+        background-color: #f2f2f2;
+    }
+    .leaderboard tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+</style>
+  <script>
+    // Firebase configuration
+
+
+    const firebaseConfig = {
+    apiKey: "AIzaSyCUX1vsNu-2Yp_BN35qNkEsfYDYWSLVzC4",
+    authDomain: "sol-51bec.firebaseapp.com",
+    projectId: "sol-51bec",
+    storageBucket: "sol-51bec.appspot.com",
+    messagingSenderId: "870973511731",
+    appId: "1:870973511731:web:1e9ff1541b46c9d58e2b46",
+    measurementId: "G-9D5HCQ7L2L"
+  };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    // Initialize Firestore
+    const firestore = firebase.firestore();
+
+    // Reference to the events collection
+    const eventsRef = firestore.collection('leaderboard');
+
+    // Function to fetch and display events
+// Function to fetch and display events
+function displayLeaderBoard() {
+  eventsRef.get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      const leaderboard = doc.data();
+      const eventName = leaderboard.Event;
+      const firstPlace = leaderboard.first;
+      const secondPlace = leaderboard.second;
+      const thirdPlace = leaderboard.third;
+      const listItem = document.createElement('li');
+      const uniqueId = `leaderboard-${doc.id}`; // Generate unique ID for each list item
+      listItem.id = uniqueId;
+      listItem.innerHTML = `
+        <div class="card">
+          <div class="card-content">
+            <strong>${eventName}</strong>
+            <p>Winner: <span>${firstPlace}</span></p>
+            <p>First Runner-Up: <span>${secondPlace}</span></p>
+            <p>Second Runner-Up: <span>${thirdPlace}</span></p>
+          </div>
+        </div>`;
+      document.getElementById('leaderboard-list').appendChild(listItem);
+    });
+  }).catch((error) => {
+    console.error('Error getting events:', error);
+  });
+}
+
+
+    // Call the function to display events when the page loads
+    window.onload = displayLeaderBoard;
+  </script>
+      <style>
+        /* Style for event list */
+#event-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Style for individual event card */
+.card {
+  margin-bottom: 20px;
+  border-radius: 10px;
+  background-color: #f5f5f5;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for card content */
+.card-content {
+  padding: 20px;
+}
+
+/* Style for event name */
+.card-content strong {
+  display: block;
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Style for event date and time */
+.card-content span {
+  font-size: 18px;
+  color: #666;
+}
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="#">Home</a>
+        <a href="#" class="right">Profile</a>
+    </div>
+    <div class="container">
+        <h1>Event Leaderboards</h1>
+        <div class="leaderboard" id="leaderboard-list">
+            <id="leaderboard"></id>
+            <!-- Leaderboard containers will be inserted here dynamically -->
+        </div>
+    </div>
+</body>
+</html>
