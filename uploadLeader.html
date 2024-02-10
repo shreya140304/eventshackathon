@@ -114,7 +114,6 @@ input[type="submit"]:hover {
     </div>
     </div>
     <script>
-        // Firebase configuration
     
     
         const firebaseConfig = {
@@ -138,7 +137,7 @@ input[type="submit"]:hover {
             const second = document.getElementById('second').value;
             const third = document.getElementById('third').value;
             if (Event && first && second && third) {
-            // Add event to Firestore
+
             leaderboardRef.add({
                 Event: Event,
                 first: first,
@@ -146,7 +145,7 @@ input[type="submit"]:hover {
                 third: third,
             }).then(() => {
                 console.log('Leaderboard Uploaded Successfully.');
-                // Reset form
+            
                 document.getElementById('leaderboard-list').reset();
             }).catch((error) => {
                 console.error('Error adding event:', error);
