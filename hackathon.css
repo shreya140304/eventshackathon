@@ -1,0 +1,138 @@
+
+/* Resetting default margin and padding */
+body, ul {
+  margin: 0;
+  padding: 0;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+nav ul li {
+  float: left;
+}
+
+nav ul li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  background-color: #111;
+}
+
+
+ 
+  
+  /* Global Styles */
+  body {
+    font-family: Arial,rgb(84, 4, 4);
+    line-height: 1.6;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  header {
+    background-color: #df5a5a;
+    color: white;
+    padding: 20px 0;
+  }
+  
+  header h1 {
+    margin: 0;
+  }
+  
+  nav ul {
+    list-style-type: none;
+  }
+  
+  nav ul li {
+    display: inline;
+    margin-right: 20px;
+  }
+  
+  nav ul li a {
+    color: black;
+    text-decoration: none;
+  }
+  
+  .hero {
+    background-image: url('https://t4.ftcdn.net/jpg/00/78/97/35/360_F_78973579_sYLDxFsEKOWnxyi9iMVVj4NuPGURN375.jpg');
+    background-size: cover;
+    color: #808080;
+    text-align: center;
+    padding:400px 0;
+  }
+  
+  .hero h2 {
+    margin-bottom: 20px;
+  }
+  
+  .btn {
+    display: inline-block;
+    background-color:#800000;
+    color: white;
+    padding: 15px 20px;
+    text-decoration: none;
+    border-radius: 10px;
+  }
+  
+  .features {
+    padding: 20px 0;
+  }
+  
+  .feature {
+    text-align: center;
+  }
+  
+  .feature i {
+    font-size: 40px;
+    margin-bottom: 20px;
+  }
+  .footer{
+     bg-color: yeloow;
+     colour: white;
+  }
+  /* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #514c4c;
+  min-width: 160px;
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  float:left;
+  color: rgb(214, 201, 201);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #1a1717;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+  main{
+    background-color:bisque;
+    padding: 20px;
+
+  }
