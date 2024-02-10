@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="rsvp.css">
+    <link rel="stylesheet" href="login.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User and Event Input</title>
+    <title>Login</title>
     <script src="https://www.gstatic.com/firebasejs/9.2.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.2.0/firebase-firestore-compat.js"></script>
 </head>
 <body>
-    <h1>Enter details to register for the event </h1>
-    <form name="RSVPFORM" id="rsvp">
+    <h1>Enter login details </h1>
+    <form name="login" id="login">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required><br><br>
 
-        <label for="eventname">Event Name:</label>
-        <input type="text" id="eventname" name="eventname" required><br><br>
+        <label for="password">password:</label>
+        <input type="text" id="password" name="password" required><br><br>
 
         <button type="button" onclick="submitForm()">Submit</button>
     </form>
@@ -32,20 +32,19 @@
         };
         firebase.initializeApp(firebaseConfig);
         const firestore = firebase.firestore();
-        const eventsRef = firestore.collection('rsvp');
-
+        const eventsRef = firestore.collection('login');
         function submitForm() {
             const username = document.getElementById('username').value;
-            const eventname = document.getElementById('eventname').value;
-            if (eventname && username) {
+            const password = document.getElementById('password').value;
+            if (password && username) {
                 eventsRef.add({
                     name: username,
-                    event: eventname
+                    password : password
                 })
                 .then(() => {
                     console.log('Event registered successfully');
                     // Reset form
-                    document.getElementById('rsvp').reset();
+                    document.getElementById('login').reset();
                 }).catch((error) => {
                     console.error('Error adding event:', error);
                 });
