@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="leaderupload.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Leaderboard</title>
+    <script src="https://www.gstatic.com/firebasejs/9.2.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.2.0/firebase-firestore-compat.js"></script>
+    
+    
+    
+</head>
+<body>
+    <h2>Upload Leaderboard</h2>
+    <form name="leaderboard" id="leaderboard-list">
+        <label for="Event">Event Name:</label>
+        <input type="text" id="Event" name="Event" required><br><br>
+
+        <label for="first">Winner:</label>
+        <input type="text" id="first" name="first" required><br><br>
+
+        <label for="second">First Runner-Up:</label>
+        <input type="text" id="second" name="second" required><br><br>
+
+        <label for="second">Second Runner-Up:</label>
+        <input type="text" id="third" name="third" required><br><br>
+
+        <input type="submit" value="Upload" id="">
+    </form>
+    <script>
+        // Firebase configuration
+    
+    
+        const firebaseConfig = {
+        apiKey: "AIzaSyCUX1vsNu-2Yp_BN35qNkEsfYDYWSLVzC4",
+        authDomain: "sol-51bec.firebaseapp.com",
+        projectId: "sol-51bec",
+        storageBucket: "sol-51bec.appspot.com",
+        messagingSenderId: "870973511731",
+        appId: "1:870973511731:web:1e9ff1541b46c9d58e2b46",
+        measurementId: "G-9D5HCQ7L2L"
+      };
+      firebase.initializeApp(firebaseConfig);
+      const firestore = firebase.firestore();
+      const leaderboardRef = firestore.collection('leaderboard');
+
+      document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('leaderboard-list').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const Event = document.getElementById('Event').value;
+            const first = document.getElementById('first').value;
+            const second = document.getElementById('second').value;
+            const third = document.getElementById('third').value;
+            if (Event && first && second && third) {
+            // Add event to Firestore
+            leaderboardRef.add({
+                Event: Event,
+                first: first,
+                second: second,
+                third: third,
+            }).then(() => {
+                console.log('Leaderboard Uploaded Successfully.');
+                // Reset form
+                document.getElementById('leaderboard-list').reset();
+            }).catch((error) => {
+                console.error('Error adding event:', error);
+            });
+            } else {
+            alert('Please Fill In All Fields.');
+            }
+        });
+        });
+
+</script>
+    
+</body>
+</html>
