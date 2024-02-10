@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Firebase Firestore Example</title>
-  <!-- Include Firebase JavaScript SDK (compatibility version) -->
+
   <script src="https://www.gstatic.com/firebasejs/9.2.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.2.0/firebase-firestore-compat.js"></script>
   <style>
@@ -60,7 +60,7 @@
         border-top-right-radius: 8px;
     }
     .leaderboard-container {
-        max-height: 300px; /* Adjust height as needed */
+        max-height: 300px; 
         overflow-y: auto;
     }
     .leaderboard {
@@ -80,7 +80,7 @@
     }
 </style>
   <script>
-    // Firebase configuration
+    
 
 
     const firebaseConfig = {
@@ -92,17 +92,16 @@
     appId: "1:870973511731:web:1e9ff1541b46c9d58e2b46",
     measurementId: "G-9D5HCQ7L2L"
   };
-    // Initialize Firebase
+    
     firebase.initializeApp(firebaseConfig);
 
-    // Initialize Firestore
+    
     const firestore = firebase.firestore();
 
-    // Reference to the events collection
+    
     const eventsRef = firestore.collection('leaderboard');
 
-    // Function to fetch and display events
-// Function to fetch and display events
+    
 function displayLeaderBoard() {
   eventsRef.get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
@@ -112,7 +111,7 @@ function displayLeaderBoard() {
       const secondPlace = leaderboard.second;
       const thirdPlace = leaderboard.third;
       const listItem = document.createElement('li');
-      const uniqueId = `leaderboard-${doc.id}`; // Generate unique ID for each list item
+      const uniqueId = `leaderboard-${doc.id}`; 
       listItem.id = uniqueId;
       listItem.innerHTML = `
         <div class="card">
@@ -131,17 +130,17 @@ function displayLeaderBoard() {
 }
 
 
-    // Call the function to display events when the page loads
+    
     window.onload = displayLeaderBoard;
   </script>
       <style>
-        /* Style for event list */
+      
 #event-list {
   list-style-type: none;
   padding: 0;
 }
 
-/* Style for individual event card */
+
 .card {
   margin-bottom: 20px;
   border-radius: 10px;
@@ -149,12 +148,12 @@ function displayLeaderBoard() {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Style for card content */
+
 .card-content {
   padding: 20px;
 }
 
-/* Style for event name */
+
 .card-content strong {
   display: block;
   font-size: 24px;
@@ -162,7 +161,7 @@ function displayLeaderBoard() {
   margin-bottom: 10px;
 }
 
-/* Style for event date and time */
+
 .card-content span {
   font-size: 18px;
   color: #666;
@@ -179,7 +178,7 @@ function displayLeaderBoard() {
         <h1>Event Leaderboards</h1>
         <div class="leaderboard" id="leaderboard-list">
             <id="leaderboard"></id>
-            <!-- Leaderboard containers will be inserted here dynamically -->
+            
         </div>
     </div>
 </body>
