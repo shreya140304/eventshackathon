@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  
+  <link rel="stylesheet" href="event.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Firebase Firestore Example</title>
@@ -38,6 +40,10 @@ function displayEvents() {
       const eventName = event.name;
       const eventDate = event.date;
       const eventTime = event.time;
+      const eventType = event.type;
+      const eventVenue = event.venue;
+      const eventCategory = event.category;
+      const eventDescription = event.description;
       const listItem = document.createElement('li');
       const uniqueId = `event-${doc.id}`; // Generate unique ID for each list item
       listItem.id = uniqueId;
@@ -47,6 +53,10 @@ function displayEvents() {
             <strong>${eventName}</strong>
             <p>Date: <span>${eventDate}</span></p>
             <p>Time: <span>${eventTime}</span></p>
+            <p>Type: <span>${eventType}</span></p>
+            <p>Venue: <span>${eventVenue}</span></p>
+            <p>Category: <span>${eventCategory}</span></p>
+            <p>Description: <span>${eventDescription}</span></p>
           </div>
         </div>`;
       document.getElementById('event-list').appendChild(listItem);
@@ -71,10 +81,24 @@ function displayEvents() {
 .card {
   margin-bottom: 20px;
   border-radius: 10px;
-  background-color: #f5f5f5;
+  background-color: burlywood;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  
 }
-
+.button {
+      display: inline-block;
+      padding: 20px 40px;
+      font-size: 20px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin: 20px;
+      align-items: flex-end;
+    }
 /* Style for card content */
 .card-content {
   padding: 20px;
@@ -83,7 +107,7 @@ function displayEvents() {
 /* Style for event name */
 .card-content strong {
   display: block;
-  font-size: 24px;
+  font-size: 36px;
   color: #333;
   margin-bottom: 10px;
 }
@@ -100,5 +124,6 @@ function displayEvents() {
 
   <h1>Events</h1>
   <ul id="event-list"></ul>
+  <button class="button">RSVP</button>
 </body>
 </html>

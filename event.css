@@ -1,7 +1,43 @@
-/* Add your styles here */
-.event {
-    border: 1px solid #ccc;
-    padding: 10px;
+body {
+    font-family: Arial, sans-serif;
+    background-color:beige;
+    text-align: center;
+}
+.card {
+    margin-bottom: 20px;
+    border-radius: 10px;
+    background-color: burlywood;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.328);
+    padding: 20px;
+} 
+    .button {
+      display: inline-block;
+      padding: 20px 40px;
+      font-size: 20px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin: 20px;
+      align-items: flex-end;
+    }
+  
+  .card-content {
+    padding: 20px;
+  }
+  
+  /* Style for event name */
+  .card-content strong {
+    display: block;
+    font-size: 24px;
+    color: #333;
     margin-bottom: 10px;
   }
   
+  /* Style for event date and time */
+  .card-content span {
+    font-size: 18px;
+    color: #666;
+  }

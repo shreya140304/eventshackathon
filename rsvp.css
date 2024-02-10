@@ -1,9 +1,9 @@
 body {
     font-family: Arial, sans-serif;
     background-color: beige;
-    
+    margin: 0;
+    padding: 0;
 }
-
 form {
     max-width: 600px;
     margin: 0 auto;
@@ -13,27 +13,32 @@ form {
     background-color: burlywood;
 }
 
-h2 {
+
+h1 {
     text-align: center;
 }
 
 label {
     display: block;
+    font-weight: bold;
     margin-bottom: 5px;
+     
+    align-items: center;
 }
 
-input[type="text"],
-input[type="date"],
-input[type="time"],
-select {
-    width: 100%;
+/* Styles for input fields */
+input[type="text"] {
+    width: calc(30% - 20px); /* Adjusting width to fit within form padding */
     padding: 8px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+     
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+    align-items: center;
 }
 
+/* Styles for submit button */
 input[type="submit"] {
     background-color: #007bff;
     color: white;
@@ -41,12 +46,20 @@ input[type="submit"] {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    width: 100%;
+    font-size: 16px;
+    align-items: center;
+
+    width: 30%; /* Make the button fill the width of the form */
 }
 
+/* Hover effect for submit button */
 input[type="submit"]:hover {
-    background-color: #0056b3;
-
-
-    
+    background-color: #007bff;
 }
+
+/* Focus effect for submit button */
+input[type="submit"]:focus {
+    outline: none;
+}
+
+
