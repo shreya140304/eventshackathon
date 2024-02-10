@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel = "stylesheet" href="rsvp.css">
+    <link rel="stylesheet" href="rsvp.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User and Event Input</title>
@@ -10,55 +10,49 @@
 </head>
 <body>
     <h1>Enter details to register for the event </h1>
-    <form name="RSVPFORM" id="rsvp"></form>
+    <form name="RSVPFORM" id="rsvp">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required><br><br>
 
         <label for="eventname">Event Name:</label>
         <input type="text" id="eventname" name="eventname" required><br><br>
 
-        <input type="submit" value="Submit">
+        <button type="button" onclick="submitForm()">Submit</button>
     </form>
     <script>
         // Firebase configuration
-    
-    
         const firebaseConfig = {
-        apiKey: "AIzaSyCUX1vsNu-2Yp_BN35qNkEsfYDYWSLVzC4",
-        authDomain: "sol-51bec.firebaseapp.com",
-        projectId: "sol-51bec",
-        storageBucket: "sol-51bec.appspot.com",
-        messagingSenderId: "870973511731",
-        appId: "1:870973511731:web:1e9ff1541b46c9d58e2b46",
-        measurementId: "G-9D5HCQ7L2L"
-      };
-      firebase.initializeApp(firebaseConfig);
-      const firestore = firebase.firestore();
-      const eventsRef = firestore.collection('rsvp');
-      document.addEventListener('DOMContentLoaded', () => {
-        document.getElementById('rsvp').addEventListener('submit', (e) => {
-            e.preventDefault();
+            apiKey: "AIzaSyCUX1vsNu-2Yp_BN35qNkEsfYDYWSLVzC4",
+            authDomain: "sol-51bec.firebaseapp.com",
+            projectId: "sol-51bec",
+            storageBucket: "sol-51bec.appspot.com",
+            messagingSenderId: "870973511731",
+            appId: "1:870973511731:web:1e9ff1541b46c9d58e2b46",
+            measurementId: "G-9D5HCQ7L2L"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const firestore = firebase.firestore();
+        const eventsRef = firestore.collection('rsvp');
+
+        function submitForm() {
             const username = document.getElementById('username').value;
             const eventname = document.getElementById('eventname').value;
-            if (eventName && username ){
-                eventsRef.add ({
-                    name : username ,
-                    event : eventName
+            if (eventname && username) {
+                eventsRef.add({
+                    name: username,
+                    event: eventname
                 })
                 .then(() => {
-                console.log('Event registered successfully');
-                // Reset form
-                document.getElementById('rsvp').reset();
-            }).catch((error) => {
-                console.error('Error adding event:', error);
-            });
+                    console.log('Event registered successfully');
+                    // Reset form
+                    document.getElementById('rsvp').reset();
+                }).catch((error) => {
+                    console.error('Error adding event:', error);
+                });
             } else {
-            alert('Please fill in all fields');
+                alert('Please fill in all fields');
             }
-        });
-        });
+        }
     </script>
-            
-
 </body>
 </html>

@@ -1,17 +1,10 @@
 body {
     font-family: Arial, sans-serif;
     background-color: beige;
-    margin: 0;
+    margin: 200px;
     padding: 0;
 }
-form {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: burlywood;
-}
+
 
 
 h1 {
@@ -26,9 +19,9 @@ label {
     align-items: center;
 }
 
-/* Styles for input fields */
+
 input[type="text"] {
-    width: calc(30% - 20px); /* Adjusting width to fit within form padding */
+    width: calc(50% - 20px);
     padding: 8px;
     margin-bottom: 15px;
      
@@ -38,7 +31,7 @@ input[type="text"] {
     align-items: center;
 }
 
-/* Styles for submit button */
+
 input[type="submit"] {
     background-color: #007bff;
     color: white;
@@ -49,15 +42,14 @@ input[type="submit"] {
     font-size: 16px;
     align-items: center;
 
-    width: 30%; /* Make the button fill the width of the form */
+    width: 30%; 
 }
 
-/* Hover effect for submit button */
+
 input[type="submit"]:hover {
     background-color: #007bff;
 }
 
-/* Focus effect for submit button */
 input[type="submit"]:focus {
     outline: none;
 }
