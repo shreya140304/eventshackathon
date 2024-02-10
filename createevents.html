@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="createevents.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Event</title>
+    <script src="https://www.gstatic.com/firebasejs/9.2.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.2.0/firebase-firestore-compat.js"></script>
+    
+    
+    
+</head>
+<body>
+    <h2>Create Event</h2>
+    <form name="eventForm" id="eventForm">
+        <label for="eventName">Event Name:</label>
+        <input type="text" id="eventName" name="eventName" required><br><br>
+
+        <label for="eventType">Event Type:</label>
+        <input type="text" id="eventType" name="eventType" required><br><br>
+
+        <label for="eventDate">Event Date:</label>
+        <input type="date" id="eventDate" name="eventDate" required><br><br>
+
+        <label for="eventTime">Event Time:</label>
+        <input type="time" id="eventTime" name="eventTime" required><br><br>
+
+        <label for="eventVenue">Event Venue:</label>
+        <input type="text" id="eventVenue" name="eventVenue" required><br><br>
+
+        <label for="eventCategory">Event Category:</label>
+        <select id="eventCategory" name="eventCategory" required>
+            <option value="">Select Category</option>
+            <option value="Workshop">Workshop</option>
+            <option value="Competition">Competition</option>
+            <option value="Social Gathering">Social Gathering</option>
+        </select><br><br>
+
+        
+        <label for="eventDescription"> Event Description with club name:</label>
+        <input type="text" id="eventDescription" name="eventDescription" rows="10" cols="50"> <br><br>
+
+        <input type="submit" value="Create Event" id="">
+    </form>
+    <script>
+        // Firebase configuration
+    
+    
+        const firebaseConfig = {
+        apiKey: "AIzaSyCUX1vsNu-2Yp_BN35qNkEsfYDYWSLVzC4",
+        authDomain: "sol-51bec.firebaseapp.com",
+        projectId: "sol-51bec",
+        storageBucket: "sol-51bec.appspot.com",
+        messagingSenderId: "870973511731",
+        appId: "1:870973511731:web:1e9ff1541b46c9d58e2b46",
+        measurementId: "G-9D5HCQ7L2L"
+      };
+      firebase.initializeApp(firebaseConfig);
+      const firestore = firebase.firestore();
+      const eventsRef = firestore.collection('events');
+
+      document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('eventForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const eventName = document.getElementById('eventName').value;
+            const eventType = document.getElementById('eventType').value;
+            const eventDate = document.getElementById('eventDate').value;
+            const eventTime = document.getElementById('eventTime').value;
+            const eventVenue = document.getElementById('eventVenue').value;
+            const eventCategory = document.getElementById('eventCategory').value;
+            const eventDescription = document.getElementById('eventDescription').value;
+            if (eventName && eventDate && eventTime && eventType && eventVenue && eventCategory && eventDescription) {
+            // Add event to Firestore
+            eventsRef.add({
+                name: eventName,
+                date: eventDate,
+                time: eventTime,
+                typ : eventType,
+                venue : eventVenue,
+                category : eventCategory,
+                description : eventDescription
+            }).then(() => {
+                console.log('Event added successfully');
+                // Reset form
+                document.getElementById('eventForm').reset();
+            }).catch((error) => {
+                console.error('Error adding event:', error);
+            });
+            } else {
+            alert('Please fill in all fields');
+            }
+        });
+        });
+
+</script>
+    
+</body>
+</html>
