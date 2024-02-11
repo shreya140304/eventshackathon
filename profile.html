@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile</title>
+  <link rel="stylesheet" href="profile.css">
+  <title>Firebase Firestore Example</title>
+  
+  <script src="https://www.gstatic.com/firebasejs/9.2.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.2.0/firebase-firestore-compat.js"></script>
+
+
+
+</head>
+<body>
+  <div class="profile">
+    <h1>User Profile</h1>
+    <form id="user-form">
+      <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+      </div>
+      <div>
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location">
+      </div>
+      <div>
+        <label for="about">About Me:</label>
+        <textarea id="about" name="about"></textarea>
+      </div>
+      <div>
+        <label for="interests">Interests:</label>
+        <input type="text" id="interests" name="interests">
+      </div> 
+      <button type="button" onclick="submitForm()">Submit</button>
+    </form>
+  </div>
+  <script>
+   
+
+
+    const firebaseConfig = {
+    apiKey: "AIzaSyCUX1vsNu-2Yp_BN35qNkEsfYDYWSLVzC4",
+    authDomain: "sol-51bec.firebaseapp.com",
+    projectId: "sol-51bec",
+    storageBucket: "sol-51bec.appspot.com",
+    messagingSenderId: "870973511731",
+    appId: "1:870973511731:web:1e9ff1541b46c9d58e2b46",
+    measurementId: "G-9D5HCQ7L2L"
+  };
+    
+    firebase.initializeApp(firebaseConfig);
+
+    
+    const firestore = firebase.firestore();
+
+    
+    const eventsRef = firestore.collection('profile');
+    
+    function submitForm() {    
+            const name = document.getElementById('name').value;
+            const username = document.getElementById('username').value;
+            const location = document.getElementById('location').value;
+            const about= document.getElementById('about').value;
+            const interests = document.getElementById('interests').value;
+            if (userForm && name && username && location && about && interests){
+                eventsRef.add({
+                    name : name,
+                    username : username,
+                    location : location,
+                    about :about,
+                    interests : interests
+                }).then(() => {
+                console.log('Event added successfully');
+                
+                document.getElementById('user-form').reset();
+            }).catch((error) => {
+                console.error('Error adding', error);
+            });
+            } else {
+            alert('Please fill in all fields');
+            }
+        }
+
+
+</script>
+
+  
+   
+</body>
+</html>
